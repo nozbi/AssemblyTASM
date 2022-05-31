@@ -4,7 +4,7 @@
 .data
     new_line db "",13,10,"$"  ;dont use
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;variables start
-   
+   string db "Hello World!","$"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;variables end
 
 .code
@@ -56,8 +56,8 @@ int 21h
 loop loop2
 ret
 
-print_string:   ;mov ax,offset STRING_VARIABLE  
-mov dx,ax
+print_string:   ;mov ax,offset STRING_VARIABLE 
+mov dx,ax 
 mov ax, @data
 mov ds, ax                  
 mov ah, 09h             
@@ -74,7 +74,8 @@ ret
 
 start:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;start    
-   
+   mov ax,offset string
+   call print_string
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;end
     mov ax, 4C00h          
     int 21h                 
